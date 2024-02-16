@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GreetingText(
+                    GreetingImage(
                         message = "Happy Birthday Alireza!",
                         from = "From Android Community",
                         modifier = Modifier.padding(8.dp)
@@ -61,7 +62,10 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
     val backImage = painterResource(R.drawable.androidparty)
-    Image(painter = backImage, contentDescription = "$message $from")
+    Box(modifier){
+        Image(painter = backImage, contentDescription = "$message $from")
+        GreetingText(message = message, from = from)
+    }
 }
 @Preview(showBackground = true, showSystemUi = true, name = "Alireza 's preview")
 @Composable
